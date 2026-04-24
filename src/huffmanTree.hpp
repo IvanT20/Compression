@@ -1,13 +1,20 @@
 #ifndef HUFFMAN_TREE_H
 #define HUFFMAN_TREE_H
 
+#include <array>
+
 class Node
 {
 
 public:
 
-    explicit Node(Node* left, Node* right, int count, char character);
-    bool isLeaf();
+    explicit Node(Node* left, Node* right, int count, char character)   // For leaf nodes
+        : left_(left), right_(right), count_(count), character_(character){}
+
+    explicit Node(int count) // For internal nodes
+        : count_(count){}
+
+    bool isLeaf() const;
 
 private:
 
@@ -15,6 +22,18 @@ private:
     Node* right_ = nullptr;
     int count_{};
     char character_{};
+};
+
+class HuffmanTree
+{
+
+public:
+
+    explicit HuffmanTree(const std::array<int, 256>& charFrequency);
+
+private:
+
+    Node* root = nullptr;
 };
 
 #endif
