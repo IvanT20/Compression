@@ -8,11 +8,11 @@ class Node
 
 public:
 
-    explicit Node(Node* left, Node* right, int count, char character)   // For leaf nodes
-        : left_(left), right_(right), count_(count), character_(character){}
+    explicit Node(int count, char character)   // For leaf nodes
+        : count_(count), character_(character){}
 
-    explicit Node(int count) // For internal nodes
-        : count_(count){}
+    explicit Node(Node* left, Node* right, int count) // For internal nodes
+        : left_(left), right_(right), count_(count){}
 
     bool isLeaf() const;
 
