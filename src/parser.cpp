@@ -20,3 +20,8 @@ void Parser::parse()
         }
     }
 }
+
+const std::array<int, 256>& Parser::getCharFrequency() const
+{
+    return charFrequency_;
+}

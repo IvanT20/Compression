@@ -14,6 +14,7 @@ public:
         : filePath_(std::move(filePath)){}
 
     void parse();
+    const std::array<int, 256>& getCharFrequency() const;
 
 private:
 
