@@ -19,7 +19,7 @@ public:
 private:
 
     std::string filePath_;
-    std::array<int, 256> charFrequency_;
+    std::array<int, 256> charFrequency_{};
 };
 
 #endif
