@@ -15,6 +15,10 @@ public:
         : left_(left), right_(right), count_(count){}
 
     bool isLeaf() const;
+    int getCount() const;
+    char getChar() const;
+    Node* left() const;
+    Node* right() const;
 
 private:
 
@@ -30,10 +34,11 @@ class HuffmanTree
 public:
 
     explicit HuffmanTree(const std::array<int, 256>& charFrequency);
+    void printTree() const;
 
 private:
 
-    Node* root = nullptr;
+    Node* root_ = nullptr;
 };
 
 #endif
