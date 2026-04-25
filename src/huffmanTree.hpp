@@ -2,6 +2,7 @@
 #define HUFFMAN_TREE_H
 
 #include <array>
+#include <string>
 
 class Node
 {
@@ -34,11 +35,15 @@ class HuffmanTree
 public:
 
     explicit HuffmanTree(const std::array<int, 256>& charFrequency);
+    void createCoding();
     void printTree() const;
 
 private:
 
+    void createCodingHelper(Node* node, std::string code);
+
     Node* root_ = nullptr;
+    std::array<std::string, 256> codes_{};
 };
 
 #endif

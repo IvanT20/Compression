@@ -68,6 +68,24 @@ HuffmanTree::HuffmanTree(const std::array<int, 256>& charFrequency)
     }
 }
 
+void HuffmanTree::createCodingHelper(Node* node, std::string code)
+{
+    if (!node) return;
+    if (node->isLeaf())
+    {
+        codes_[static_cast<int>(node->getChar())] = code;
+        return;
+    }
+
+    createCodingHelper(node->left(), code + "0");
+    createCodingHelper(node->right(), code + "1");
+}
+
+void HuffmanTree::createCoding()
+{
+    createCodingHelper(root_, "");
+}
+
 void HuffmanTree::printTree() const // For testing purposes
 {
     std::stack<Node*> stack;
