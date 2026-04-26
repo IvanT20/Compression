@@ -3,6 +3,7 @@
 
 #include <array>
 #include <string>
+#include <cstdint>
 
 class Node
 {
@@ -16,7 +17,7 @@ public:
         : left_(left), right_(right), count_(count){}
 
     bool isLeaf() const;
-    int getCount() const;
+    std::uint64_t getCount() const;
     char getChar() const;
     Node* left() const;
     Node* right() const;
@@ -25,7 +26,7 @@ private:
 
     Node* left_ = nullptr;
     Node* right_ = nullptr;
-    int count_{};
+    std::uint64_t count_{};
     char character_{};
 };
 
@@ -34,8 +35,9 @@ class HuffmanTree
 
 public:
 
-    explicit HuffmanTree(const std::array<int, 256>& charFrequency);
+    explicit HuffmanTree(const std::array<std::uint32_t, 256>& charFrequency);
     void createCoding();
+    const std::array<std::string, 256>& getCodes() const;
     void printTree() const;
 
 private:

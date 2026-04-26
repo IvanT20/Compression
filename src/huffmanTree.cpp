@@ -18,7 +18,7 @@ bool Node::isLeaf() const
     return !left_ && !right_;
 }
 
-int Node::getCount() const
+std::uint64_t Node::getCount() const
 {
     return count_;
 }
@@ -38,7 +38,7 @@ Node* Node::right() const
     return right_;
 }
 
-HuffmanTree::HuffmanTree(const std::array<int, 256>& charFrequency)
+HuffmanTree::HuffmanTree(const std::array<std::uint32_t, 256>& charFrequency)
 {
     std::priority_queue<Node*, std::vector<Node*>, Comparator> tree;
 
@@ -84,6 +84,11 @@ void HuffmanTree::createCodingHelper(Node* node, std::string code)
 void HuffmanTree::createCoding()
 {
     createCodingHelper(root_, "");
+}
+
+const std::array<std::string, 256>& HuffmanTree::getCodes() const
+{
+    return codes_;
 }
 
 void HuffmanTree::printTree() const // For testing purposes
