@@ -26,7 +26,7 @@ private:
 
     Node* left_ = nullptr;
     Node* right_ = nullptr;
-    std::uint64_t count_{};
+    std::uint32_t count_{};
     char character_{};
 };
 
@@ -36,16 +36,14 @@ class HuffmanTree
 public:
 
     explicit HuffmanTree(const std::array<std::uint32_t, 256>& charFrequency);
-    void createCoding();
-    const std::array<std::string, 256>& getCodes() const;
+    std::array<std::string, 256> generateCodes();
     void printTree() const;
 
 private:
 
-    void createCodingHelper(Node* node, std::string code);
+    void generateCodesHelper(Node* node, std::string code);
 
     Node* root_ = nullptr;
-    std::array<std::string, 256> codes_{};
 };
 
 #endif
