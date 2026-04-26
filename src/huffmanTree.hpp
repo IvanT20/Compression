@@ -10,10 +10,10 @@ class Node
 
 public:
 
-    explicit Node(int count, char character)   // For leaf nodes
+    explicit Node(std::uint32_t count, char character)   // For leaf nodes
         : count_(count), character_(character){}
 
-    explicit Node(Node* left, Node* right, int count) // For internal nodes
+    explicit Node(Node* left, Node* right, std::uint32_t count) // For internal nodes
         : left_(left), right_(right), count_(count){}
 
     bool isLeaf() const;
