@@ -9,7 +9,7 @@ class Compressor
 
 public:
 
-    Compressor(std::string filePath)
+    explicit Compressor(std::string filePath)
         : filePath_(std::move(filePath)){}
 
     void compress();
