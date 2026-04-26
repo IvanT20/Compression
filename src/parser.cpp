@@ -14,13 +14,13 @@ void Parser::parse()
         {
             for (std::size_t i = 0; i < line.size(); ++i)
             {
-                ++charFrequency_[static_cast<int>(line[i])];
+                ++charFrequency_[static_cast<std::uint32_t>(line[i])];
             }
         }
     }
 }
 
-const std::array<int, 256>& Parser::getCharFrequency() const
+const std::array<std::uint32_t, 256>& Parser::getCharFrequency() const
 {
     return charFrequency_;
 }
