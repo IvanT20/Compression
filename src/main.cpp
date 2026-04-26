@@ -1,5 +1,7 @@
 #include <iostream>
 #include "parser.hpp"
+#include "huffmanTree.hpp"
+#include "compressor.hpp"
 
 int main(int argc, char** argv)
 {
@@ -11,4 +13,9 @@ int main(int argc, char** argv)
 
     Parser parser(argv[1]);
     parser.parse();
+    HuffmanTree tree(parser.getCharFrequency());
+    tree.createCoding();
+    tree.printTree();
+    Compressor compressor(argv[1], parser.getCharFrequency(), tree.getCodes());
+    compressor.compress();
 }

@@ -9,5 +9,5 @@ TARGET := compressor
 
 all: $(TARGET)
 
-$(TARGET):  $(SRC_DIR)/main.cpp $(SRC_DIR)/parser.cpp $(SRC_DIR)/parser.hpp $(SRC_DIR)/huffmanTree.cpp $(SRC_DIR)/huffmanTree.hpp
-	$(CC) $(CXX_FLAGS) $(SRC_DIR)/main.cpp $(SRC_DIR)/parser.cpp $(SRC_DIR)/huffmanTree.cpp -o $(TARGET)
+$(TARGET):  $(SRC_DIR)/main.cpp $(SRC_DIR)/parser.cpp $(SRC_DIR)/parser.hpp $(SRC_DIR)/huffmanTree.cpp $(SRC_DIR)/huffmanTree.hpp $(SRC_DIR)/compressor.cpp $(SRC_DIR)/compressor.hpp
+	$(CC) $(CXX_FLAGS) $(SRC_DIR)/main.cpp $(SRC_DIR)/parser.cpp $(SRC_DIR)/huffmanTree.cpp $(SRC_DIR)/compressor.cpp -o $(TARGET)
