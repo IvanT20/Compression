@@ -93,7 +93,7 @@ static void generateCodesHelper(Node* node, std::array<std::string, 256>& codes,
     if (!node) return;
     if (node->isLeaf())
     {
-        codes[static_cast<int>(node->getChar())] = code;
+        codes[static_cast<unsigned char>(node->getChar())] = code;
         return;
     }
 
