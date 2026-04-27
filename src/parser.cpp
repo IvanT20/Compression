@@ -8,14 +8,11 @@ void Parser::parse()
 
     if (file.is_open())
     {
-        std::string line;
+        char c;
 
-        while (std::getline(file, line))
+        while (file.get(c))
         {
-            for (std::size_t i = 0; i < line.size(); ++i)
-            {
-                ++charFrequency_[static_cast<std::uint32_t>(line[i])];
-            }
+            ++charFrequency_[static_cast<unsigned char>(c)];
         }
     }
 }
