@@ -46,19 +46,18 @@ HuffmanTree::HuffmanTree(const std::array<std::uint32_t, 256>& charFrequency)
     {
         if (charFrequency[i] != 0)
         {
-            Node* node = new Node(charFrequency[i], static_cast<char>(i));
+            Node* node = new Node(charFrequency[i], static_cast<unsigned char>(i));
             tree.push(node);
         }
     }
 
     while (tree.size() > 1)
     {
-        Node* parent = nullptr;
         Node* nodeOne = tree.top();
         tree.pop();
         Node* nodeTwo = tree.top();
         tree.pop();
-        parent = new Node(nodeTwo, nodeOne, nodeOne->getCount() + nodeTwo->getCount());
+        Node* parent = new Node(nodeOne, nodeTwo, nodeOne->getCount() + nodeTwo->getCount());
         tree.push(parent);
     }
 
@@ -68,27 +67,51 @@ HuffmanTree::HuffmanTree(const std::array<std::uint32_t, 256>& charFrequency)
     }
 }
 
-void HuffmanTree::createCodingHelper(Node* node, std::string code)
+HuffmanTree::~HuffmanTree()
+{
+    if (!root_) return;
+
+    std::stack<Node*> stack;
+    stack.push(root_);
+
+    while (!stack.empty())
+    {
+        Node* current = stack.top();
+        stack.pop();
+
+        if (current->left()) stack.push(current->left());
+        if (current->right()) stack.push(current->right());
+
+        delete current;
+    }
+
+    root_ = nullptr;
+}
+
+static void generateCodesHelper(Node* node, std::array<std::string, 256>& codes, std::string& code)
 {
     if (!node) return;
     if (node->isLeaf())
     {
-        codes_[static_cast<int>(node->getChar())] = code;
+        codes[static_cast<int>(node->getChar())] = code;
         return;
     }
 
-    createCodingHelper(node->left(), code + "0");
-    createCodingHelper(node->right(), code + "1");
+    code.push_back('0');
+    generateCodesHelper(node->left(), codes, code);
+    code.pop_back();
+
+    code.push_back('1');
+    generateCodesHelper(node->right(), codes, code);
+    code.pop_back();
 }
 
-void HuffmanTree::createCoding()
+std::array<std::string, 256> HuffmanTree::generateCodes() const
 {
-    createCodingHelper(root_, "");
-}
-
-const std::array<std::string, 256>& HuffmanTree::getCodes() const
-{
-    return codes_;
+    std::array<std::string, 256> codes{};
+    std::string code = "";
+    generateCodesHelper(root_, codes, code);
+    return codes;
 }
 
 void HuffmanTree::printTree() const // For testing purposes
