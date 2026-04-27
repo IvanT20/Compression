@@ -36,6 +36,7 @@ class HuffmanTree
 public:
 
     explicit HuffmanTree(const std::array<std::uint32_t, 256>& charFrequency);
+    ~HuffmanTree();
     std::array<std::string, 256> generateCodes() const;
     void printTree() const;
 
