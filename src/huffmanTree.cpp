@@ -110,6 +110,13 @@ std::array<std::string, 256> HuffmanTree::generateCodes() const
 {
     std::array<std::string, 256> codes{};
     std::string code = "";
+
+    if (root_ && root_->isLeaf())
+    {
+        codes[static_cast<unsigned char>(root_->getChar())] = '0';
+        return codes;
+    }
+
     generateCodesHelper(root_, codes, code);
     return codes;
 }
@@ -134,4 +141,9 @@ void HuffmanTree::printTree() const // For testing purposes
             std::cout << current->getChar() << ": " << current->getCount() << '\n';;
         }
     }
+}
+
+bool HuffmanTree::empty() const
+{
+    return !root_;
 }
