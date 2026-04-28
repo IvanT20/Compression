@@ -27,5 +27,5 @@ Currently I'm not finished with the compressor, but to use it in its current sta
 # Current Plans
 
 - Working on Huffman Compression
-    - Need to implement encoding of the file after generating huffman tree
+    - Work on decompression
 
