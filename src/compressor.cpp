@@ -65,5 +65,5 @@ void Compressor::compress()
 
     outputFile.clear();
     outputFile.seekp(paddingPos, std::ios::beg);
-    outputFile.put(static_cast<char>(padding));
+    outputFile.write(reinterpret_cast<const char*>(&padding), sizeof(std::uint8_t));
 }
