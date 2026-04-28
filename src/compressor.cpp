@@ -7,7 +7,7 @@
 void Compressor::compress()
 {
     Parser parser(filePath_);
-    parser.parse();
+    parser.parseUncompressed();
     const auto& charFrequency = parser.getCharFrequency();
     HuffmanTree tree(charFrequency);
 
