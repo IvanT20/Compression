@@ -4,7 +4,7 @@
 
 void Parser::parse()
 {
-    std::ifstream file(filePath_);
+    std::ifstream file(filePath_, std::ios::binary);
 
     if (file.is_open())
     {
