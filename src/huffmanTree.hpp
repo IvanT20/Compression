@@ -39,6 +39,7 @@ public:
     ~HuffmanTree();
     std::array<std::string, 256> generateCodes() const;
     void printTree() const;
+    bool empty() const;
 
 private:
 
