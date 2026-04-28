@@ -28,4 +28,7 @@ Currently I'm not finished with the compressor, but to use it in its current sta
 
 - Working on Huffman Compression
     - Work on decompression
+    - Refactor compression logic at some point
+    - Optimize how the codes are stored
+    - Possibly swap to Canonical Huffman Compression
 
