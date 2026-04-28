@@ -28,15 +28,13 @@ void Parser::parseCompressed()
         char buffer[1024]{};
         file.read(buffer, sizeof(buffer));
 
-        if (file.gcount() != 1024)
-        {
-            throw std::runtime_error("File is too small\n");
-        }
-
+        if (!file) throw std::runtime_error("Failed to read frequency table\n");
 
         std::memcpy(charFrequency_.data(), buffer, charFrequency_.size() * sizeof(std::uint32_t));
         file.read(buffer, sizeof(std::uint8_t));
         std::memcpy(&padding_, buffer, sizeof(padding_));
+
+        data_.assign(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
     }
 }
 
