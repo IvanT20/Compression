@@ -42,3 +42,8 @@ const std::array<std::uint32_t, 256>& Parser::getCharFrequency() const
 {
     return charFrequency_;
 }
+
+const std::vector<std::uint8_t>& Parser::getData() const
+{
+    return data_;
+}
