@@ -47,3 +47,8 @@ const std::vector<std::uint8_t>& Parser::getData() const
 {
     return data_;
 }
+
+std::uint8_t Parser::getPadding() const
+{
+    return padding_;
+}

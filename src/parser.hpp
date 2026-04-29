@@ -19,6 +19,7 @@ public:
     void parseCompressed();
     const std::array<std::uint32_t, 256>& getCharFrequency() const;
     const std::vector<std::uint8_t>& getData() const;
+    std::uint8_t getPadding() const;
 
 private:
 
