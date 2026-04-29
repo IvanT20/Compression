@@ -18,16 +18,24 @@ You should now have an executable named `compressor`.
 
 # Usage
 
-Currently I'm not finished with the compressor, but to use it in its current state run this command:
+To use the compressor run this command:
 
 ```
-./compressor [file]
+./compressor [flags] [file]
 ```
+
+> By default the program will try to compress the file when no flag is provided.
+
+## Flags
+
+Currently, there is only one flag but I may add more in the future.
+
+* **-d**: This flag tells the program to decompress whatever file you give it
 
 # Current Plans
 
 - Working on Huffman Compression
-    - Work on decompression
+    - ~~Work on decompression~~ Finished
     - Refactor compression logic at some point
     - Optimize how the codes are stored
     - Possibly swap to Canonical Huffman Compression
