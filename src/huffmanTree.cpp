@@ -147,3 +147,8 @@ bool HuffmanTree::empty() const
 {
     return !root_;
 }
+
+const Node* HuffmanTree::root() const
+{
+    return root_;
+}
