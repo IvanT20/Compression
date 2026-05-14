@@ -30,6 +30,12 @@ private:
     unsigned char character_{};
 };
 
+struct HuffmanCode
+{
+    std::uint64_t bits{};
+    std::uint8_t length{};
+};
+
 class HuffmanTree
 {
 
@@ -37,7 +43,7 @@ public:
 
     explicit HuffmanTree(const std::array<std::uint32_t, 256>& charFrequency);
     ~HuffmanTree();
-    std::array<std::string, 256> generateCodes() const;
+    std::array<HuffmanCode, 256> generateCodes() const;
     void printTree() const;
     bool empty() const;
     const Node* root() const;
