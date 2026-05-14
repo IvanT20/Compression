@@ -88,36 +88,31 @@ HuffmanTree::~HuffmanTree()
     root_ = nullptr;
 }
 
-static void generateCodesHelper(Node* node, std::array<std::string, 256>& codes, std::string& code)
+static void generateCodesHelper(Node* node, std::array<HuffmanCode, 256>& codes, std::uint64_t bits, std::uint8_t length)
 {
     if (!node) return;
     if (node->isLeaf())
     {
-        codes[static_cast<unsigned char>(node->getChar())] = code;
+        codes[static_cast<unsigned char>(node->getChar())] = {bits, length};
         return;
     }
 
-    code.push_back('0');
-    generateCodesHelper(node->left(), codes, code);
-    code.pop_back();
+    generateCodesHelper(node->left(), codes, bits << 1, length + 1); // Traverses left side of node
 
-    code.push_back('1');
-    generateCodesHelper(node->right(), codes, code);
-    code.pop_back();
+    generateCodesHelper(node->right(), codes, (bits << 1) | 1, length + 1); // Traverses right size of node
 }
 
-std::array<std::string, 256> HuffmanTree::generateCodes() const
+std::array<HuffmanCode, 256> HuffmanTree::generateCodes() const
 {
-    std::array<std::string, 256> codes{};
-    std::string code = "";
+    std::array<HuffmanCode, 256> codes{};
 
     if (root_ && root_->isLeaf())
     {
-        codes[static_cast<unsigned char>(root_->getChar())] = '0';
+        codes[static_cast<unsigned char>(root_->getChar())] = {0, 1};
         return codes;
     }
 
-    generateCodesHelper(root_, codes, code);
+    generateCodesHelper(root_, codes, 0, 0);
     return codes;
 }
 
